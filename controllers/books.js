@@ -19,14 +19,17 @@ module.exports = {
       res.send(result)
     });
   },
-  update: function(req, res) {        
-    Book.update({ _id: mongoose.Types.ObjectId(req.params.id) }, {
+  update: function(req, res) {
+    console.log(req.params.id)      
+    Book.update({ _id: req.params.id }, {
       $set: req.body
     }, function(err, result) {
+      console.log(result)
       if (err) {
         res.send({err: err})
-      }
+      }else{
       res.send(result)
+      }
     });
   },
   delete: function(req, res) {
